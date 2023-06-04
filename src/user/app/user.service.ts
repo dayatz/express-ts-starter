@@ -1,7 +1,6 @@
-import { User } from "@prisma/client";
+import { User } from "../domain/user.entity";
 import { IUserRepository } from "../domain/user.repository";
 import { IUserService } from "../domain/user.service";
-import { prisma } from "../../lib/prisma.client";
 
 export default class UserService implements IUserService {
   userRepo: IUserRepository
@@ -9,7 +8,8 @@ export default class UserService implements IUserService {
     this.userRepo = userRepo
   }
 
-  async getAll(): Promise<User[]> {
-    return prisma.user.findMany()
+  getAll = async (): Promise<User[]> => {
+    const users = await this.userRepo.getAll()
+    return users
   }
 }
