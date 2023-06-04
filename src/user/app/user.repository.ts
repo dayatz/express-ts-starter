@@ -1,6 +1,6 @@
 import type { User } from '../domain/user.entity'
 import { IUserRepository } from "../domain/user.repository";
-import { prisma } from "../../lib/prisma.client";
+import { prisma } from "~/lib/prisma.client";
 
 export default class UserRepository implements IUserRepository {
   async getAll(): Promise<User[]> {
